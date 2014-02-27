@@ -11,7 +11,9 @@ namespace TaskManager
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Flyttad till site.master page load.. lägga något arv mellan page och själva sidorna kanske? typ _default:authpage:page
+            //Det här är iaf en smidig lösning tillsvidare.
+            //Session["PersonID"] = 4;
         }
     }
 }

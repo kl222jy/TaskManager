@@ -3,8 +3,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="row">
         <div class="col-md-12">
-            <h2>All Tasks</h2>
-            <p>List of all tasks in the current project.</p>
+            <h2>TaskManager</h2>
+            <p>You are now logged in as PersonID=4 in ProjectID=1</p>
         </div>
     </div>
 </asp:Content>

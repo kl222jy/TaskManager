@@ -2,13 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using TaskManager.Model;
 
-namespace TaskManager
+namespace TaskManager.Pages
 {
-    public partial class SiteMaster : MasterPage
+    public partial class PageHelper : System.Web.UI.Page
     {
+        private Service _service;
+
+        protected Service Service
+        {
+            get
+            {
+                return _service ?? (_service = new Service());
+            }
+        }
         protected int PersonId
         {
             get
@@ -26,15 +34,10 @@ namespace TaskManager
             {
                 if (Session["ProjectID"] == null)
                 {
-                    Session["ProjectID"] = 4;
+                    Session["ProjectID"] = 1;
                 }
                 return (int)Session["ProjectID"];
             }
-        }
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

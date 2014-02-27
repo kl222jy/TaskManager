@@ -1,4 +1,4 @@
-﻿<%@ master language="C#" autoeventwireup="true" codebehind="Site.master.cs" inherits="TaskManager.SiteMaster" %>
+﻿<%@ master language="C#" autoeventwireup="true" codebehind="Site.master.cs" inherits="TaskManager.SiteMaster" ViewStateMode="Disabled" %>
 
 <!DOCTYPE html>
 
@@ -51,10 +51,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">All Tasks</a></li>
-                        <li><a runat="server" href="~/Current">Current Tasks</a></li>
-                        <li><a runat="server" href="~/Done">Finished Tasks</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
+                        <li><a runat="server" href="~/tasks">All Tasks</a></li>
+                        <li><a runat="server" href="~/tasks/current">Current Tasks</a></li>
+                        <li><a runat="server" href="~/tasks/done">Finished Tasks</a></li>
+                        <li><a runat="server" href="~/task/create">Create Task</a></li>
+                        <li><a runat="server" href="~/about">About</a></li>
                     </ul>
                 </div>
             </div>

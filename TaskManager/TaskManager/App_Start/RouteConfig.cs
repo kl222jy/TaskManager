@@ -10,9 +10,33 @@ namespace TaskManager
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Permanent;
-            routes.EnableFriendlyUrls(settings);
+            //var settings = new FriendlyUrlSettings();
+            //settings.AutoRedirectMode = RedirectMode.Permanent;
+            //routes.EnableFriendlyUrls(settings);
+
+            routes.MapPageRoute("TasksDone",
+                "tasks/done",
+                "~/Pages/TaskPages/TasksDone.aspx");
+
+            routes.MapPageRoute("UserTasks",
+                "tasks/current",
+                "~/Pages/TaskPages/UserTasks.aspx");
+
+            routes.MapPageRoute("CreateTask",
+                "task/create",
+                "~/Pages/TaskPages/CreateTask.aspx");
+
+            routes.MapPageRoute("Tasks",
+                "tasks",
+                "~/Pages/TaskPages/Tasks.aspx");
+
+            routes.MapPageRoute("Contact",
+                "about",
+                "~/About.aspx");
+
+            routes.MapPageRoute("Default",
+                "",
+                "~/Default.aspx");
         }
     }
 }
