@@ -34,9 +34,13 @@ namespace TaskManager
                 "about",
                 "~/About.aspx");
 
+            routes.MapPageRoute("Projects",
+                "projects",
+                "~/Pages/ProjectPages/ProjectList.aspx");
+
             routes.MapPageRoute("Default",
                 "",
-                "~/Default.aspx");
+                "~/Pages/PersonPages/PersonList.aspx");
         }
     }
 }

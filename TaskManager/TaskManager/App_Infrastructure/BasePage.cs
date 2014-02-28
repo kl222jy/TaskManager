@@ -6,7 +6,7 @@ using TaskManager.Model;
 
 namespace TaskManager.Pages
 {
-    public partial class PageHelper : System.Web.UI.Page
+    public partial class BasePage : System.Web.UI.Page
     {
         private Service _service;
 
@@ -27,6 +27,10 @@ namespace TaskManager.Pages
                 }
                 return (int)Session["PersonID"];
             }
+            set
+            {
+                Session["PersonID"] = value;
+            }
         }
         protected int ProjectId
         {
@@ -37,6 +41,10 @@ namespace TaskManager.Pages
                     Session["ProjectID"] = 1;
                 }
                 return (int)Session["ProjectID"];
+            }
+            set
+            {
+                Session["ProjectID"] = value;
             }
         }
     }

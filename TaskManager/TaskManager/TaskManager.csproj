@@ -109,6 +109,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Pages\PersonPages\PersonList.aspx" />
+    <Content Include="Pages\ProjectPages\ProjectList.aspx" />
     <Content Include="Pages\TaskPages\CreateTask.aspx" />
     <Content Include="Pages\TaskPages\Tasks.aspx" />
     <Content Include="Pages\TaskPages\TasksDone.aspx" />
@@ -178,12 +180,30 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\BLL\Person.cs" />
+    <Compile Include="Model\BLL\Project.cs" />
     <Compile Include="Model\DAL\DALBase.cs" />
+    <Compile Include="Model\DAL\PersonDAL.cs" />
+    <Compile Include="Model\DAL\ProjectDAL.cs" />
     <Compile Include="Model\DAL\TaskDAL.cs" />
     <Compile Include="Model\Service.cs" />
     <Compile Include="Model\BLL\Task.cs" />
-    <Compile Include="App_Infrastructure\PageHelper.cs">
+    <Compile Include="App_Infrastructure\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PersonPages\PersonList.aspx.cs">
+      <DependentUpon>PersonList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PersonPages\PersonList.aspx.designer.cs">
+      <DependentUpon>PersonList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ProjectPages\ProjectList.aspx.cs">
+      <DependentUpon>ProjectList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\ProjectPages\ProjectList.aspx.designer.cs">
+      <DependentUpon>ProjectList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\TaskPages\CreateTask.aspx.cs">
       <DependentUpon>CreateTask.aspx</DependentUpon>

@@ -9,7 +9,40 @@ namespace TaskManager.Model
 {
     public class Service
     {
+        private PersonDAL _personDAL;
+        private ProjectDAL _projectDAL;
         private TaskDAL _taskDAL;
+
+        private PersonDAL PersonDAL
+        {
+            get
+            {
+                try
+                {
+                    return _personDAL ?? (_personDAL = new PersonDAL());
+                }
+                catch (Exception)
+                {
+
+                    throw new ApplicationException("An unexpected error occured in the service layer.");
+                }
+            }
+        }
+        private ProjectDAL ProjectDAL
+        {
+            get
+            {
+                try
+                {
+                    return _projectDAL ?? (_projectDAL = new ProjectDAL());
+                }
+                catch (Exception)
+                {
+
+                    throw new ApplicationException("An unexpected error occured in the service layer.");
+                }
+            }
+        }
 
         private TaskDAL TaskDAL
         {
@@ -76,6 +109,41 @@ namespace TaskManager.Model
             {
                 TaskDAL.newTask(task);
             }
+        }
+
+        public IEnumerable<Person> GetAllUsers()
+        {
+            return PersonDAL.GetAllUsers();
+        }
+
+        public void CreateProject(Project project, int personId)
+        {
+            ProjectDAL.CreateProject(project, personId);
+        }
+
+        public void DeleteProject(int projectId)
+        {
+            ProjectDAL.DeleteProject(projectId);
+        }
+
+        public Project GetProjectByID(int projectId)
+        {
+            return ProjectDAL.GetProjectById(projectId);
+        }
+
+        public IEnumerable<Project> GetProjects(int personId)
+        {
+            return ProjectDAL.GetProjects(personId);
+        }
+
+        public int GetNewestProject(int personId)
+        {
+            return ProjectDAL.GetNewestProject(personId);
+        }
+
+        public void UpdateProject(Project project)
+        {
+            ProjectDAL.UpdateProject(project);
         }
     }
 }

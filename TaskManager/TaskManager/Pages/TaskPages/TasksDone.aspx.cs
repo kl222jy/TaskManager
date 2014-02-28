@@ -9,7 +9,7 @@ using TaskManager.Model;
 namespace TaskManager.Pages.TaskPages
 {
     //public partial class TasksDone : System.Web.UI.Page
-    public partial class TasksDone : PageHelper
+    public partial class TasksDone : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
