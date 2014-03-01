@@ -272,10 +272,51 @@ namespace TaskManager.Model.DAL
                 }
             }
         }
+        public void notDoneTask(int taskId)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("task.usp_notDoneTask", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
 
+                    cmd.Parameters.Add("@TaskID", SqlDbType.Int, 4).Value = taskId;
 
+                    conn.Open();
 
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
 
+        public void leaveTask(int taskId, int personId, int projectId)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("task.usp_leaveTask", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@TaskID", SqlDbType.Int, 4).Value = taskId;
+                    cmd.Parameters.Add("@PersonID", SqlDbType.Int, 4).Value = personId;
+                    cmd.Parameters.Add("@ProjectID", SqlDbType.Int, 4).Value = projectId;
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
         
     }
 }

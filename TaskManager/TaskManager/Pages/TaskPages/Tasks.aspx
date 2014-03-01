@@ -12,14 +12,18 @@
                 </div>
             </asp:Panel>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
-            <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" UpdateMethod="TaskListView_UpdateItem" DataKeyNames="TaskId">
+            <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" DataKeyNames="TaskID">
                 <LayoutTemplate>
-                    <ul>
+                    <ul class="list-group">
                         <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                     </ul>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <li><asp:LinkButton runat="server" CommandName="Update" OnClientClick="return confirm('Are you sure you wish to start working on this task?');"><%#: Item.TaskDescription %></asp:LinkButton></li>
+                    <li class="list-group-item">
+                        <asp:LinkButton runat="server" CommandName="RemoveTask" CommandArgument="<%#: Item.TaskID %>" OnCommand="RemoveTaskLinkButton_Command" ID="RemoveTaskLinkButton" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="JoinTask" CommandArgument="<%#: Item.TaskID %>" OnCommand="WorkOnTaskLinkButton_Command" ID="WorkOnTaskLinkButton" CssClass="btn btn-primary btn-xs"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                        - <%#: Item.TaskDescription %>
+                    </li>
                 </ItemTemplate>
             </asp:ListView>
         </div>

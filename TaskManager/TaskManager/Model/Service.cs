@@ -145,5 +145,15 @@ namespace TaskManager.Model
         {
             ProjectDAL.UpdateProject(project);
         }
+
+        public void notDoneTask(int taskId)
+        {
+            TaskDAL.notDoneTask(taskId);
+        }
+
+        public void leaveTask(int taskId, int personId, int projectId)
+        {
+            TaskDAL.leaveTask(taskId, personId, projectId);
+        }
     }
 }

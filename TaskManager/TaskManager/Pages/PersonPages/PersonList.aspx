@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-12">
             <h2>TaskManager</h2>
-            <p>Choose a user to be logged in as(default setup is personid = 4 and projectid = 1).</p>
+            <p>Choose a user to be logged in as(default setup is Kristoffer Lind and ProjIO).</p>
             <asp:Panel ID="MessagePanel" runat="server" Visible="False">
                 <div class="alert alert-success successbox">
                     <a class="close" data-dismiss="alert">x</a>
@@ -14,7 +14,7 @@
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
             <asp:ListView ID="PersonListView" runat="server" ItemType="TaskManager.Model.Person" SelectMethod="PersonListView_GetData" DataKeyNames="PersonId">
                 <LayoutTemplate>
-                    <table>
+                    <table class="table table-hover table-responsive">
                         <tr>
                             <th>Name</th>
                             <th>Email</th>

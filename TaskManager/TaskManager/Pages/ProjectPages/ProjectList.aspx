@@ -31,7 +31,7 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td><%#: Item.ProjectName %></td>
+                        <td><asp:LinkButton ID="chooseProject" runat="server" CommandName="chooseProject" OnCommand="chooseProject_Command" CommandArgument="<%#: Item.ProjectId %>"><%#: Item.ProjectName %></asp:LinkButton></td>
                         <td><%#: Item.ProjectDescription %></td>
                         <td><asp:LinkButton ID="EditLinkButton" runat="server" CommandName="Edit" Text="Edit" CausesValidation="false" /></td>
                         <td><asp:LinkButton ID="DeleteLinkButton" runat="server" CommandName="Delete" Text="Delete" CausesValidation="false" OnClientClick="return confirm('Are you sure you wish to delete this project?');" /></td>

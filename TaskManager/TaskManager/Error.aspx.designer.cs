@@ -11,7 +11,7 @@ namespace TaskManager
 {
 
 
-    public partial class _Default
+    public partial class Error
     {
     }
 }

@@ -12,14 +12,17 @@
                 </div>
             </asp:Panel>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
-            <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData">
+            <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" DataKeyNames="TaskID">
                 <LayoutTemplate>
-                    <ul>
+                    <ul class="list-group">
                         <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                     </ul>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <li><%#: Item.TaskDescription %></li>
+                    <li class="list-group-item">
+                        <asp:LinkButton runat="server" CommandName="MarkNotDone" CommandArgument="<%#: Item.TaskID %>" OnCommand="MarkNotDoneLinkButton_Command" ID="MarkNotDoneLinkButton" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+                        - <%#: Item.TaskDescription %>
+                    </li>
                 </ItemTemplate>
             </asp:ListView>
         </div>

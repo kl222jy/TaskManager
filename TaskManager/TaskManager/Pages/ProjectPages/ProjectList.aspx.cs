@@ -52,7 +52,7 @@ namespace TaskManager.Pages.ProjectPages
                 try
                 {
                     Service.UpdateProject(project);
-                    Page.SetTemp("message", "Project was created.");
+                    Page.SetTemp("message", "Project was updated.");
                     Response.RedirectToRoute("Projects");
                 }
                 catch (Exception)
@@ -87,12 +87,26 @@ namespace TaskManager.Pages.ProjectPages
             try
             {
                 Service.DeleteProject(ProjectId);
-                Page.SetTemp("message", "Project was created.");
+                Page.SetTemp("message", "Project was deleted.");
                 Response.RedirectToRoute("Projects");
             }
             catch (Exception)
             {
                 ModelState.AddModelError(string.Empty, "An unexpected error occured while deleting the project.");
+            }
+        }
+
+        protected void chooseProject_Command(object sender, CommandEventArgs e)
+        {
+            try
+            {
+                ProjectId = int.Parse((string)e.CommandArgument);
+                Page.SetTemp("message", "Project activated.");
+                Response.RedirectToRoute("Tasks");
+            }
+            catch (Exception)
+            {
+                ModelState.AddModelError(string.Empty, "Failed to activate project.");
             }
         }
     }

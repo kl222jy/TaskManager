@@ -26,5 +26,22 @@ namespace TaskManager.Pages.TaskPages
         {
             return Service.getDoneTasks(ProjectId);
         }
+
+        protected void MarkNotDoneLinkButton_Command(object sender, CommandEventArgs e)
+        {
+            if (ModelState.IsValid)     //Hyfsat onödigt?
+            {
+                try
+                {
+                    Service.notDoneTask(int.Parse((string)e.CommandArgument));
+                    Page.SetTemp("message", "Task is now in progress again and will now show up in current tasks for users that worked on it when it was marked as done.");
+                    Response.RedirectToRoute("Tasks");
+                }
+                catch (Exception)
+                {
+                    ModelState.AddModelError(String.Empty, "An unexpected error occured.");
+                }
+            }
+        }
     }
 }

@@ -12,15 +12,18 @@
                 </div>
             </asp:Panel>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
-            <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" UpdateMethod="TaskListView_UpdateItem" DataKeyNames="TaskId">
+            <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" DataKeyNames="TaskID">
                 <LayoutTemplate>
-                    <ul>
+                    <ul class="list-group">
                         <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                     </ul>
                 </LayoutTemplate>
                 <ItemTemplate>
-                    <li>
-                        <asp:LinkButton runat="server" CommandName="Update" OnClientClick="return confirm('Are you sure you wish to mark this task as done?');"><%#: Item.TaskDescription %></asp:LinkButton></li>
+                    <li class="list-group-item">
+                        <asp:LinkButton runat="server" CommandName="StopWorkingOnTask" CommandArgument="<%#: Item.TaskID %>" OnCommand="StopWorkingOnTaskLinkButton_Command" ID="StopWorkingOnTaskLinkButton" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+                        <asp:LinkButton runat="server" CommandName="MarkTaskAsDone" CommandArgument="<%#: Item.TaskID %>" OnCommand="MarkAsDoneLinkButton_Command" ID="MarkAsDoneLinkButton" CssClass="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                        - <%#: Item.TaskDescription %>
+                    </li>
                 </ItemTemplate>
             </asp:ListView>
         </div>

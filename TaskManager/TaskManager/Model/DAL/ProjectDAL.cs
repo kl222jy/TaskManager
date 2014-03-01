@@ -159,7 +159,7 @@ namespace TaskManager.Model.DAL
             {
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("project.usp_createProject", conn);
+                    SqlCommand cmd = new SqlCommand("project.usp_updateProject", conn);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.Add("@ProjectID", SqlDbType.Int, 4).Value = project.ProjectId;
