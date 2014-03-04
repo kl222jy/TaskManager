@@ -14,14 +14,14 @@
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
             <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" DataKeyNames="TaskID">
                 <LayoutTemplate>
-                    <ul class="list-group">
+                    <ul class="list-group tasklist">
                         <asp:PlaceHolder ID="itemPlaceholder" runat="server" />
                     </ul>
                 </LayoutTemplate>
                 <ItemTemplate>
                     <li class="list-group-item">
-                        <asp:LinkButton runat="server" CommandName="StopWorkingOnTask" CommandArgument="<%#: Item.TaskID %>" OnCommand="StopWorkingOnTaskLinkButton_Command" ID="StopWorkingOnTaskLinkButton" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
-                        <asp:LinkButton runat="server" CommandName="MarkTaskAsDone" CommandArgument="<%#: Item.TaskID %>" OnCommand="MarkAsDoneLinkButton_Command" ID="MarkAsDoneLinkButton" CssClass="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
+                        <asp:LinkButton runat="server" data-toggle="tooltip" data-original-title="Quit working on this task." CommandName="StopWorkingOnTask" CommandArgument="<%#: Item.TaskID %>" OnCommand="StopWorkingOnTaskLinkButton_Command" ID="StopWorkingOnTaskLinkButton" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+                        <asp:LinkButton runat="server" data-toggle="tooltip" data-original-title="Mark this task as done." CommandName="MarkTaskAsDone" CommandArgument="<%#: Item.TaskID %>" OnCommand="MarkAsDoneLinkButton_Command" ID="MarkAsDoneLinkButton" CssClass="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
                         - <%#: Item.TaskDescription %>
                     </li>
                 </ItemTemplate>

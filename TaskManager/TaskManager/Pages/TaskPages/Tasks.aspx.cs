@@ -36,6 +36,7 @@ namespace TaskManager.Pages.TaskPages
                     Service.deleteTask(int.Parse((string)e.CommandArgument), ProjectId);
                     Page.SetTemp("message", "Task was successfully deleted.");
                     Response.RedirectToRoute("Tasks");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
                 {
@@ -53,11 +54,29 @@ namespace TaskManager.Pages.TaskPages
                     Service.joinTask(PersonId, ProjectId, int.Parse((string)e.CommandArgument));
                     Page.SetTemp("message", "Task updated, you are now assigned to work on this task.");
                     Response.RedirectToRoute("Tasks");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
                 {
                     ModelState.AddModelError(String.Empty, "An unexpected error occured while the task was being assigned.");
                 }
+            }
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void TaskListView_UpdateItem(int TaskID)
+        {
+            var task = Service.getTaskById(TaskID, ProjectId);
+            // Load the item here, e.g. item = MyDataLayer.Find(id);
+            if (task == null)
+            {
+                ModelState.AddModelError(String.Empty, "Task was not found.");
+                return;
+            }
+            TryUpdateModel(task);
+            if (ModelState.IsValid)
+            {
+                Service.UpdateTask(task);
             }
         }
     }

@@ -118,7 +118,18 @@ namespace TaskManager.Model
 
         public void CreateProject(Project project, int personId)
         {
-            ProjectDAL.CreateProject(project, personId);
+             ICollection<ValidationResult> validationResults;
+
+             if (!project.Validate(out validationResults))
+             {
+                 var ex = new ValidationException("");
+                 ex.Data.Add("ValidationResults", validationResults);
+                 throw ex;
+             }
+             else
+             {
+                 ProjectDAL.CreateProject(project, personId);
+             }
         }
 
         public void DeleteProject(int projectId)
@@ -143,7 +154,18 @@ namespace TaskManager.Model
 
         public void UpdateProject(Project project)
         {
-            ProjectDAL.UpdateProject(project);
+             ICollection<ValidationResult> validationResults;
+
+             if (!project.Validate(out validationResults))
+             {
+                 var ex = new ValidationException("");
+                 ex.Data.Add("ValidationResults", validationResults);
+                 throw ex;
+             }
+             else
+             {
+                 ProjectDAL.UpdateProject(project);
+             }
         }
 
         public void notDoneTask(int taskId)
@@ -154,6 +176,22 @@ namespace TaskManager.Model
         public void leaveTask(int taskId, int personId, int projectId)
         {
             TaskDAL.leaveTask(taskId, personId, projectId);
+        }
+
+        public void UpdateTask(Task task)
+        {
+            ICollection<ValidationResult> validationResults;
+
+            if (!task.Validate(out validationResults))
+            {
+                var ex = new ValidationException("");
+                ex.Data.Add("ValidationResults", validationResults);
+                throw ex;
+            }
+            else
+            {
+                TaskDAL.UpdateTask(task);
+            }
         }
     }
 }

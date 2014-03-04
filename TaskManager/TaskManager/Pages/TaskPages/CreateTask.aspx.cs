@@ -27,6 +27,7 @@ namespace TaskManager.Pages.TaskPages
                     Service.newTask(task);
                     Page.SetTemp("message", "Task was created.");
                     Response.RedirectToRoute("Tasks");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
                 {

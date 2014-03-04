@@ -54,6 +54,7 @@ namespace TaskManager.Pages.ProjectPages
                     Service.UpdateProject(project);
                     Page.SetTemp("message", "Project was updated.");
                     Response.RedirectToRoute("Projects");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
                 {
@@ -72,6 +73,7 @@ namespace TaskManager.Pages.ProjectPages
                     Service.CreateProject(project, PersonId);
                     Page.SetTemp("message", "Project was created.");
                     Response.RedirectToRoute("Projects");
+                    Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)
                 {
@@ -89,6 +91,7 @@ namespace TaskManager.Pages.ProjectPages
                 Service.DeleteProject(ProjectId);
                 Page.SetTemp("message", "Project was deleted.");
                 Response.RedirectToRoute("Projects");
+                Context.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)
             {
@@ -103,6 +106,7 @@ namespace TaskManager.Pages.ProjectPages
                 ProjectId = int.Parse((string)e.CommandArgument);
                 Page.SetTemp("message", "Project activated.");
                 Response.RedirectToRoute("Tasks");
+                Context.ApplicationInstance.CompleteRequest();
             }
             catch (Exception)
             {

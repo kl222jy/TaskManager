@@ -317,6 +317,29 @@ namespace TaskManager.Model.DAL
                 }
             }
         }
+
+        public void UpdateTask(Task task)
+        {
+            using (SqlConnection conn = CreateConnection())
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("task.usp_updateTask", conn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add("@TaskID", SqlDbType.Int, 4).Value = task.TaskID;
+                    cmd.Parameters.Add("@TaskDescription", SqlDbType.VarChar, 500).Value = task.TaskDescription;
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw new ApplicationException("An error occured in the data access layer.");
+                }
+            }
+        }
         
     }
 }
