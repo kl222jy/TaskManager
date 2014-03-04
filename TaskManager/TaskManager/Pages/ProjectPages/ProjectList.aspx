@@ -39,16 +39,16 @@
                 </ItemTemplate>
                 <InsertItemTemplate>
                     <tr>
-                        <td><asp:DynamicControl ID="ProjectNameDynamicControl" runat="server" DataField="ProjectName" Mode="Insert" ValidationGroup="insert" /></td>
-                        <td><asp:DynamicControl ID="ProjectDescriptionDynamicControl" runat="server" DataField="ProjectDescription" Mode="Insert" ValidationGroup="insert" /></td>
+                        <td><asp:DynamicControl ID="ProjectNameInsert" runat="server" DataField="ProjectName" Mode="Insert" ValidationGroup="insert" /></td>
+                        <td><asp:DynamicControl ID="ProjectDescriptionInsert" runat="server" DataField="ProjectDescription" Mode="Insert" ValidationGroup="insert" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Insert" Text="Spara" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" /></td>
                     </tr>
                 </InsertItemTemplate>
                 <EditItemTemplate>
                     <tr>
-                        <td><asp:DynamicControl ID="ProjectNameDynamicControl" runat="server" DataField="ProjectName" Mode="Edit" /></td>
-                        <td><asp:DynamicControl ID="ProjectDescriptionDynamicControl" runat="server" DataField="ProjectDescription" Mode="Edit" /></td>
+                        <td><asp:DynamicControl ID="ProjectNameEdit" runat="server" DataField="ProjectName" Mode="Edit" /></td>
+                        <td><asp:DynamicControl ID="ProjectDescriptionEdit" runat="server" DataField="ProjectDescription" Mode="Edit" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Update" Text="Spara" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" /></td>
                     </tr>

@@ -7,9 +7,10 @@
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
             <asp:FormView ID="FormView1" runat="server" ItemType="TaskManager.Model.Task" InsertMethod="FormView1_InsertItem" DefaultMode="Insert" RenderOuterTable="false">
              <InsertItemTemplate>
-                 <div class="form-group">
+                 <div class="form-group create-task">
                     <label for="TaskDescriptionTextBox">Task Description</label>
-                    <asp:TextBox ID="TaskDescriptionTextBox" runat="server" Text="<%#: BindItem.TaskDescription %>" CssClass="form-control" placeholder="Enter description" TextMode="MultiLine" MaxLength="500"></asp:TextBox>
+                     <asp:DynamicControl ID="TaskDescriptionDC" DataField="TaskDescription" Mode="Insert" runat="server" />
+                    <%--<asp:TextBox ID="TaskDescriptionTextBox" runat="server" Text="<%#: BindItem.TaskDescription %>" CssClass="form-control" placeholder="Enter description" TextMode="MultiLine" MaxLength="500"></asp:TextBox>--%>
                  </div>
                  <asp:Button ID="InsertButton" runat="server" Text="Create" CommandName="Insert" CssClass="btn btn-default" />
              </InsertItemTemplate>

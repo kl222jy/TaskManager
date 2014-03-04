@@ -10,7 +10,7 @@ namespace TaskManager.Model
     {
         [Key]
         public int TaskID { get; set; }
-        [Required(ErrorMessage = "Description cannot be empty"), StringLength(500, ErrorMessage = "Description can be at most 500 characters.")]
+        [Required(ErrorMessage = "Description cannot be empty"), StringLength(500, ErrorMessage = "Description can be at most 500 characters."), DataType(DataType.MultilineText)]
         public string TaskDescription { get; set; }
         [Required]
         public int ProjectID { get; set; }
