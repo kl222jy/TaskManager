@@ -29,3 +29,8 @@ textarea {
         padding: 0;
     }
 }
+
+.createTask {
+    max-width: 100%;
+    width: auto;
+}

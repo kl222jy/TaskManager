@@ -9,8 +9,11 @@
              <InsertItemTemplate>
                  <div class="form-group create-task">
                     <label for="TaskDescriptionTextBox">Task Description</label>
-                     <%-- DynamicControl ensures that validation will follow through from model to clientside based on data annotations --%>
-                     <asp:DynamicControl ID="TaskDescriptionDC" DataField="TaskDescription" Mode="Insert" runat="server" />
+                     <%--<asp:DynamicControl ID="TaskDescriptionDC" DataField="TaskDescription" Mode="Insert" runat="server" />--%>
+
+                     <%-- DataType.MultilineText doesn't work, so in this case i had to do it this way. The only other choice would be to fix the implementation of dynamiccontrols, this is faster. --%>
+                     <asp:TextBox ID="TaskDescriptionTextBox" runat="server" Text="<%#: BindItem.TaskDescription %>" CssClass="form-control createTask" placeholder="Enter description" TextMode="MultiLine" MaxLength="500"></asp:TextBox>
+                     <asp:RequiredFieldValidator ControlToValidate="TaskDescriptionTextBox" runat="server" ErrorMessage="Task Description cannot be empty." Display="None" />
                  </div>
                  <asp:Button ID="InsertButton" runat="server" Text="Create" CommandName="Insert" CssClass="btn btn-default" />
              </InsertItemTemplate>

@@ -42,9 +42,17 @@
                 </ItemTemplate>
                 <InsertItemTemplate>
                     <tr>
-                        <%-- DynamicControl ensures validation based on data annotations --%>
-                        <td><asp:DynamicControl ID="ProjectNameInsert" runat="server" DataField="ProjectName" Mode="Insert" ValidationGroup="insert" /></td>
-                        <td><asp:DynamicControl ID="ProjectDescriptionInsert" runat="server" DataField="ProjectDescription" Mode="Insert" ValidationGroup="insert" /></td>
+                        <%-- Tragically, validationgroup also seems to break the functionality of dynamiccontrols.. --%>
+                        <td>
+                            <%--<asp:DynamicControl ID="ProjectNameInsert" runat="server" DataField="ProjectName" Mode="Insert" ValidationGroup="insert" />--%>
+                            <asp:TextBox ID="ProjectNameInsertTextBox" runat="server" Text="<%#: BindItem.ProjectName %>" ValidationGroup="insert" MaxLength="30" />
+                            <asp:RequiredFieldValidator ID="ProjectNameRequiredFieldValidator" ControlToValidate="ProjectNameInsertTextBox" runat="server" ErrorMessage="Project name cannot be empty" ViewStateMode="Inherit" Display="None"></asp:RequiredFieldValidator>
+                        </td>
+                        <td>
+                            <%--<asp:DynamicControl ID="ProjectDescriptionInsert" runat="server" DataField="ProjectDescription" Mode="Insert" ValidationGroup="insert" />--%>
+                            <asp:TextBox ID="ProjectDescriptionInsertTextBox" runat="server" Text="<%#: BindItem.ProjectDescription %>" ValidationGroup="insert" MaxLength="500" />
+                            <asp:RequiredFieldValidator ID="ProjectDescriptionRequiredFieldValidator" runat="server" ControlToValidate="ProjectDescriptionInsertTextBox" ErrorMessage="Project description cannot be empty" Display="None"></asp:RequiredFieldValidator>
+                        </td>
                         <td><asp:LinkButton runat="server" CommandName="Insert" Text="Spara" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" /></td>
                     </tr>
