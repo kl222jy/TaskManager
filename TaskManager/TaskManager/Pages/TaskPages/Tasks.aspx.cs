@@ -10,26 +10,34 @@ namespace TaskManager.Pages.TaskPages
 {
     public partial class Tasks : BasePage //System.Web.UI.Page
     {
+        /// <summary>
+        /// Presents a message for successful operations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
             MessagePanel.Visible = !String.IsNullOrWhiteSpace(MessageLiteral.Text);
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+        /// <summary>
+        /// Fetches a list of task that noone is currently working on
+        /// </summary>
+        /// <returns>List of tasks(not in progress)</returns>
         public IEnumerable<Task> TaskListView_GetData()
         {
             return Service.getTasks(ProjectId);
         }
 
+        /// <summary>
+        /// Deletes a task
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void RemoveTaskLinkButton_Command(object sender, CommandEventArgs e)
         {
-            if (ModelState.IsValid)     //Hyfsat onödigt?
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -45,9 +53,15 @@ namespace TaskManager.Pages.TaskPages
             }
         }
 
+
+        /// <summary>
+        /// Sets the current user as working on the task, changes status of task
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void WorkOnTaskLinkButton_Command(object sender, CommandEventArgs e)
         {
-            if (ModelState.IsValid)     //Hyfsat onödigt?
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -63,16 +77,22 @@ namespace TaskManager.Pages.TaskPages
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        /// <summary>
+        /// Updates changes med to the task
+        /// </summary>
+        /// <param name="TaskID"></param>
         public void TaskListView_UpdateItem(int TaskID)
         {
+            //Try to find the specified task
             var task = Service.getTaskById(TaskID, ProjectId);
-            // Load the item here, e.g. item = MyDataLayer.Find(id);
+
+            //Show error and stop if no task was found
             if (task == null)
             {
                 ModelState.AddModelError(String.Empty, "Task was not found.");
                 return;
             }
+            //Otherwise save
             TryUpdateModel(task);
             if (ModelState.IsValid)
             {

@@ -9,6 +9,10 @@ namespace TaskManager.Model.DAL
 {
     public class PersonDAL : DALBase
     {
+        /// <summary>
+        /// Fetch all users
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<Person> GetAllUsers()
         {
             using (SqlConnection conn = CreateConnection())

@@ -9,6 +9,11 @@ namespace TaskManager.Model.DAL
 {
     public class TaskDAL : DALBase
     {
+        /// <summary>
+        /// Delete task
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="projectId"></param>
         public void deleteTask(int taskId, int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -32,6 +37,11 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Mark task as done
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="projectId"></param>
         public void doneTask(int taskId, int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -55,6 +65,11 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Fetch list of tasks that are completed
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns>list of completed tasks</returns>
         public IEnumerable<Task> getDoneTasks(int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -97,6 +112,12 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Fetch task by id
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
         public Task getTaskById(int taskId, int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -138,6 +159,11 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Fetch tasks of active project
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
         public IEnumerable<Task> getTasks(int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -180,6 +206,12 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Fetch tasks of current user
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
         public IEnumerable<Task> getUserTasks(int personId, int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -223,6 +255,12 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Set user as working on task with taskId
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <param name="projectId"></param>
+        /// <param name="taskId"></param>
         public void joinTask(int personId, int projectId, int taskId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -247,6 +285,10 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Create task
+        /// </summary>
+        /// <param name="task"></param>
         public void newTask(Task task)
         {
             using (SqlConnection conn = CreateConnection())
@@ -272,6 +314,10 @@ namespace TaskManager.Model.DAL
                 }
             }
         }
+        /// <summary>
+        /// Mark task as not done
+        /// </summary>
+        /// <param name="taskId"></param>
         public void notDoneTask(int taskId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -294,6 +340,12 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Set user as not working on specific task
+        /// </summary>
+        /// <param name="taskId"></param>
+        /// <param name="personId"></param>
+        /// <param name="projectId"></param>
         public void leaveTask(int taskId, int personId, int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -318,6 +370,10 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Update task
+        /// </summary>
+        /// <param name="task"></param>
         public void UpdateTask(Task task)
         {
             using (SqlConnection conn = CreateConnection())

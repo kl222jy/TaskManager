@@ -9,8 +9,8 @@
              <InsertItemTemplate>
                  <div class="form-group create-task">
                     <label for="TaskDescriptionTextBox">Task Description</label>
+                     <%-- DynamicControl ensures that validation will follow through from model to clientside based on data annotations --%>
                      <asp:DynamicControl ID="TaskDescriptionDC" DataField="TaskDescription" Mode="Insert" runat="server" />
-                    <%--<asp:TextBox ID="TaskDescriptionTextBox" runat="server" Text="<%#: BindItem.TaskDescription %>" CssClass="form-control" placeholder="Enter description" TextMode="MultiLine" MaxLength="500"></asp:TextBox>--%>
                  </div>
                  <asp:Button ID="InsertButton" runat="server" Text="Create" CommandName="Insert" CssClass="btn btn-default" />
              </InsertItemTemplate>

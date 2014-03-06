@@ -10,31 +10,34 @@ namespace TaskManager.Pages.TaskPages
 {
     public partial class UserTasks : BasePage //System.Web.UI.Page
     {
+        /// <summary>
+        /// Presents a message for successful operations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            MessageLiteral.Text = Page.GetTemp("message") as string;
+            MessagePanel.Visible = !String.IsNullOrWhiteSpace(MessageLiteral.Text);
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+        /// <summary>
+        /// Fetches a list of tasks that the user is currently working on.
+        /// </summary>
+        /// <returns>List of tasks.</returns>
         public IEnumerable<Task> TaskListView_GetData()
         {
             return Service.getUserTasks(PersonId, ProjectId);
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
-        public void TaskListView_UpdateItem(int TaskId)
-        {
-
-        }
-
+        /// <summary>
+        /// Removes the user from users working on the task and if this would result in noone working on the task, it will also change the status of the task.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void StopWorkingOnTaskLinkButton_Command(object sender, CommandEventArgs e)
         {
-            if (ModelState.IsValid)     //Hyfsat onödigt?
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -50,9 +53,14 @@ namespace TaskManager.Pages.TaskPages
             }
         }
 
+        /// <summary>
+        /// Changes status of the task to done.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void MarkAsDoneLinkButton_Command(object sender, CommandEventArgs e)
         {
-            if (ModelState.IsValid)     //Hyfsat onödigt?
+            if (ModelState.IsValid)
             {
                 try
                 {

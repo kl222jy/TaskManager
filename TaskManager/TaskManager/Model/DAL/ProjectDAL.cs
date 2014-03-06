@@ -9,6 +9,11 @@ namespace TaskManager.Model.DAL
 {
     public class ProjectDAL : DALBase
     {
+        /// <summary>
+        /// Create project
+        /// </summary>
+        /// <param name="project"></param>
+        /// <param name="personId"></param>
         public void CreateProject(Project project, int personId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -33,6 +38,10 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Delete project
+        /// </summary>
+        /// <param name="projectId"></param>
         public void DeleteProject(int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -54,6 +63,12 @@ namespace TaskManager.Model.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Fetch most recently created project
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <returns></returns>
         public int GetNewestProject(int personId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -77,6 +92,12 @@ namespace TaskManager.Model.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// Fetch project by id
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
         public Project GetProjectById(int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -113,6 +134,11 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Fetch projects the specified person is a member of
+        /// </summary>
+        /// <param name="personId"></param>
+        /// <returns></returns>
         public IEnumerable<Project> GetProjects(int personId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -153,6 +179,10 @@ namespace TaskManager.Model.DAL
             }
         }
 
+        /// <summary>
+        /// Update project
+        /// </summary>
+        /// <param name="project"></param>
         public void UpdateProject(Project project)
         {
             using (SqlConnection conn = CreateConnection())

@@ -10,18 +10,21 @@ namespace TaskManager.Pages.ProjectPages
 {
     public partial class ProjectList : BasePage
     {
+        /// <summary>
+        /// Presents message from successful operations
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
             MessagePanel.Visible = !String.IsNullOrWhiteSpace(MessageLiteral.Text);
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+        /// <summary>
+        /// Fetches a list of projects that the current user is a member of
+        /// </summary>
+        /// <returns>list of projects</returns>
         public IEnumerable<Project> ProjectListView_GetData()
         {
             try
@@ -35,20 +38,27 @@ namespace TaskManager.Pages.ProjectPages
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        /// <summary>
+        /// Updates project
+        /// </summary>
+        /// <param name="ProjectId">Id of project to update</param>
         public void ProjectListView_UpdateItem(int ProjectId)
         {
+            //Try to fetch the project
             var project = Service.GetProjectByID(ProjectId);
-            // Load the item here, e.g. item = MyDataLayer.Find(id);
+
+            //Show error and stop if no project was found
             if (project == null)
             {
-                // The item wasn't found
                 ModelState.AddModelError(string.Empty, "Project was not found.");
                 return;
             }
+
+            //Validate
             TryUpdateModel(project);
             if (ModelState.IsValid)
             {
+                //Try to update
                 try
                 {
                     Service.UpdateProject(project);
@@ -58,16 +68,24 @@ namespace TaskManager.Pages.ProjectPages
                 }
                 catch (Exception)
                 {
+                    //Show error
                     ModelState.AddModelError(string.Empty, "An unexpected error occured while updating the project.");
                 }
 
             }
         }
 
+        /// <summary>
+        /// Creates a new project
+        /// </summary>
+        /// <param name="project">Project object</param>
         public void ProjectListView_InsertItem(Project project)
         {
+            //Validate
+            TryUpdateModel(project);
             if (ModelState.IsValid)
             {
+                //Try to create
                 try
                 {
                     Service.CreateProject(project, PersonId);
@@ -83,7 +101,10 @@ namespace TaskManager.Pages.ProjectPages
             }
         }
 
-        // The id parameter name should match the DataKeyNames value set on the control
+        /// <summary>
+        /// Delete project
+        /// </summary>
+        /// <param name="ProjectId">Id of project to delete</param>
         public void ProjectListView_DeleteItem(int ProjectId)
         {
             try
@@ -99,6 +120,11 @@ namespace TaskManager.Pages.ProjectPages
             }
         }
 
+        /// <summary>
+        /// Choose active project, sets projectid as a session variable for later use
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void chooseProject_Command(object sender, CommandEventArgs e)
         {
             try

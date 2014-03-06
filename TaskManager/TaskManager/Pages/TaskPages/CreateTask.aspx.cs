@@ -15,6 +15,10 @@ namespace TaskManager.Pages.TaskPages
 
         }
 
+        /// <summary>
+        /// Creates a new task
+        /// </summary>
+        /// <param name="task">Task</param>
         public void FormView1_InsertItem(Task task)
         {
             task.ProjectID = ProjectId;

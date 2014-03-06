@@ -5,13 +5,16 @@
         <div class="col-md-12">
             <h2>Tasks</h2>
             <p>List of all tasks that need to be done.</p>
+            <%-- Success messages --%>
             <asp:Panel ID="MessagePanel" runat="server" Visible="False">
                 <div class="alert alert-success successbox">
                     <a class="close" data-dismiss="alert">x</a>
                     <asp:Literal ID="MessageLiteral" runat="server" />
                 </div>
             </asp:Panel>
+            <%-- Error messages --%>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
+            <%-- List of tasks that need to be done --%>
             <asp:ListView ID="TaskListView" runat="server" ItemType="TaskManager.Model.Task" SelectMethod="TaskListView_GetData" UpdateMethod="TaskListView_UpdateItem" DataKeyNames="TaskID">
                 <LayoutTemplate>
                     <ul class="list-group tasklist">
@@ -28,9 +31,10 @@
                 </ItemTemplate>
                 <EditItemTemplate>
                     <li class="list-group-item">
-                        <asp:LinkButton runat="server" data-toggle="tooltip" data-original-title="Cancel editing." CommandName="Cancel" ID="CancelLinkButton" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
+                        <asp:LinkButton runat="server" data-toggle="tooltip" data-original-title="Cancel editing." CommandName="Cancel" ID="CancelLinkButton" CausesValidation="false" CssClass="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span></asp:LinkButton>
                         <asp:LinkButton runat="server" data-toggle="tooltip" data-original-title="Save changes." CommandName="Update" ID="SaveLinkButton" CssClass="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok"></span></asp:LinkButton>
-                        - <asp:TextBox runat="server" ID="EditDescriptionTextBox" Text="<%#: BindItem.TaskDescription %>"></asp:TextBox>
+                        <%-- DynamicControl makes sure clientside validation will be implemented based on data annotations --%>
+                        - <asp:DynamicControl DataField="TaskDescription" ID="EditTaskDescription" runat="server" Mode="Edit" />
                     </li>
                 </EditItemTemplate>
             </asp:ListView>

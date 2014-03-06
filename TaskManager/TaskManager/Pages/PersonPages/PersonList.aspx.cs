@@ -10,23 +10,26 @@ namespace TaskManager.Pages.PersonPages
 {
     public partial class PersonList : BasePage
     {
+        /// <summary>
+        /// Handles presentation of success messages
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
             MessagePanel.Visible = !String.IsNullOrWhiteSpace(MessageLiteral.Text);
         }
 
-        // The return type can be changed to IEnumerable, however to support
-        // paging and sorting, the following parameters must be added:
-        //     int maximumRows
-        //     int startRowIndex
-        //     out int totalRowCount
-        //     string sortByExpression
+        /// <summary>
+        /// Fetches list of persons
+        /// </summary>
+        /// <returns>List of persons</returns>
         public IEnumerable<Person> PersonListView_GetData()
         {
             try
             {
-                return Service.GetAllUsers();
+                return Service.GetAllUsersCached();
             }
             catch (Exception)
             {
@@ -35,6 +38,11 @@ namespace TaskManager.Pages.PersonPages
             }
         }
 
+        /// <summary>
+        /// Mark user as active, saves personid in session
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void chooseUser_Command(object sender, CommandEventArgs e)
         {
             try
