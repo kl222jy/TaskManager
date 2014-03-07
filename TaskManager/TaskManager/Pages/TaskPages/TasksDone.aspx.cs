@@ -14,8 +14,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Presents a message for successful operations
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
@@ -34,8 +34,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Puts task back in progress, will show up under current task for users that were working on it when it was marked as done.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void MarkNotDoneLinkButton_Command(object sender, CommandEventArgs e)
         {
             if (ModelState.IsValid)     //Hyfsat onödigt?

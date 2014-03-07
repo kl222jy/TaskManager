@@ -13,8 +13,8 @@ namespace TaskManager.Pages.ProjectPages
         /// <summary>
         /// Presents message from successful operations
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender info</param>
+        /// <param name="e">Event info</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
@@ -123,8 +123,8 @@ namespace TaskManager.Pages.ProjectPages
         /// <summary>
         /// Choose active project, sets projectid as a session variable for later use
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender info</param>
+        /// <param name="e">Event info</param>
         protected void chooseProject_Command(object sender, CommandEventArgs e)
         {
             try

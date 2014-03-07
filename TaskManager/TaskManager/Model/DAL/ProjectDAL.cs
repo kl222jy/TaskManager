@@ -12,8 +12,8 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Create project
         /// </summary>
-        /// <param name="project"></param>
-        /// <param name="personId"></param>
+        /// <param name="project">project to create</param>
+        /// <param name="personId">id of person creating project</param>
         public void CreateProject(Project project, int personId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -41,7 +41,7 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Delete project
         /// </summary>
-        /// <param name="projectId"></param>
+        /// <param name="projectId">id of project to delete</param>
         public void DeleteProject(int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -67,8 +67,8 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Fetch most recently created project
         /// </summary>
-        /// <param name="personId"></param>
-        /// <returns></returns>
+        /// <param name="personId">id of person to get newest projectid for</param>
+        /// <returns>projectid of newest project</returns>
         public int GetNewestProject(int personId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -96,8 +96,8 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Fetch project by id
         /// </summary>
-        /// <param name="projectId"></param>
-        /// <returns></returns>
+        /// <param name="projectId">id of project to fetch</param>
+        /// <returns>specific project</returns>
         public Project GetProjectById(int projectId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -137,8 +137,8 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Fetch projects the specified person is a member of
         /// </summary>
-        /// <param name="personId"></param>
-        /// <returns></returns>
+        /// <param name="personId">id of person to fetch projects for</param>
+        /// <returns>list of projects</returns>
         public IEnumerable<Project> GetProjects(int personId)
         {
             using (SqlConnection conn = CreateConnection())
@@ -182,7 +182,7 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Update project
         /// </summary>
-        /// <param name="project"></param>
+        /// <param name="project">project to update</param>
         public void UpdateProject(Project project)
         {
             using (SqlConnection conn = CreateConnection())

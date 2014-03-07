@@ -12,7 +12,7 @@ namespace TaskManager.Model.DAL
         /// <summary>
         /// Fetch all users
         /// </summary>
-        /// <returns></returns>
+        /// <returns>list of persons</returns>
         public IEnumerable<Person> GetAllUsers()
         {
             using (SqlConnection conn = CreateConnection())

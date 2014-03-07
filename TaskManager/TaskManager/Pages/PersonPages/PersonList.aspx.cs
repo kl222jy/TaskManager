@@ -13,8 +13,8 @@ namespace TaskManager.Pages.PersonPages
         /// <summary>
         /// Handles presentation of success messages
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender info</param>
+        /// <param name="e">Event info</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
@@ -41,13 +41,14 @@ namespace TaskManager.Pages.PersonPages
         /// <summary>
         /// Mark user as active, saves personid in session
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">Sender info</param>
+        /// <param name="e">Event info</param>
         protected void chooseUser_Command(object sender, CommandEventArgs e)
         {
             try
             {
-                PersonId = int.Parse((string)e.CommandArgument);
+                PersonId = int.Parse(e.CommandArgument.ToString());
+                //PersonId = int.Parse((string)e.CommandArgument);
                 ProjectId = Service.GetNewestProject(PersonId);
                 Page.SetTemp("message", "You are now logged in.");
                 Response.RedirectToRoute("Projects");

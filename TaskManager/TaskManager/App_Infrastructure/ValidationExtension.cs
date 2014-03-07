@@ -11,16 +11,27 @@ namespace TaskManager
         /// <summary>
         /// Implements easy validation based on data annotations (obj.validate)
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="instance"></param>
-        /// <param name="validationResults"></param>
-        /// <returns></returns>
-        public static bool Validate<T>(this T instance, out ICollection<ValidationResult> validationResults)
+        /// <param name="obj">object to validate</param>
+        /// <param name="validationResults">output of results</param>
+        /// <returns>true/false - success/failure</returns>
+        public static bool TryValidate(this object obj, out ICollection<ValidationResult> validationResults)
         {
-            var validationContext = new ValidationContext(instance);
+            var validationContext = new ValidationContext(obj);
             validationResults = new List<ValidationResult>();
 
-            return Validator.TryValidateObject(instance, validationContext, validationResults, true);
+            return Validator.TryValidateObject(obj, validationContext, validationResults, true);
         }
+
+        //public static bool Validate<T>(this T instance, out ICollection<ValidationResult> validationResults)
+        //{
+        //    var validationContext = new ValidationContext(instance);
+        //    validationResults = new List<ValidationResult>();
+
+        //    return Validator.TryValidateObject(instance, validationContext, validationResults, true);
+        //}
+
+
+
+
     }
 }

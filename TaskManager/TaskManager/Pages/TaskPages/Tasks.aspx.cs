@@ -13,8 +13,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Presents a message for successful operations
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
@@ -33,8 +33,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Deletes a task
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void RemoveTaskLinkButton_Command(object sender, CommandEventArgs e)
         {
             if (ModelState.IsValid)
@@ -57,8 +57,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Sets the current user as working on the task, changes status of task
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void WorkOnTaskLinkButton_Command(object sender, CommandEventArgs e)
         {
             if (ModelState.IsValid)
@@ -80,7 +80,7 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Updates changes med to the task
         /// </summary>
-        /// <param name="TaskID"></param>
+        /// <param name="TaskID">id of task to update</param>
         public void TaskListView_UpdateItem(int TaskID)
         {
             //Try to find the specified task

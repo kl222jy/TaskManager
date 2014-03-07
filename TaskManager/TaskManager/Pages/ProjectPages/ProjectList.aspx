@@ -34,7 +34,7 @@
                 </LayoutTemplate>
                 <ItemTemplate>
                     <tr>
-                        <td><asp:LinkButton ID="chooseProject" runat="server" CommandName="chooseProject" OnCommand="chooseProject_Command" CommandArgument="<%#: Item.ProjectId %>"><%#: Item.ProjectName %></asp:LinkButton></td>
+                        <td><asp:LinkButton ID="chooseProject" runat="server" CommandName="chooseProject" CausesValidation="false" OnCommand="chooseProject_Command" CommandArgument="<%#: Item.ProjectId %>"><%#: Item.ProjectName %></asp:LinkButton></td>
                         <td><%#: Item.ProjectDescription %></td>
                         <td><asp:LinkButton ID="EditLinkButton" runat="server" CommandName="Edit" Text="Edit" CausesValidation="false" /></td>
                         <td><asp:LinkButton ID="DeleteLinkButton" runat="server" CommandName="Delete" Text="Delete" CausesValidation="false" OnClientClick="return confirm('Are you sure you wish to delete this project?');" /></td>
@@ -46,12 +46,12 @@
                         <td>
                             <%--<asp:DynamicControl ID="ProjectNameInsert" runat="server" DataField="ProjectName" Mode="Insert" ValidationGroup="insert" />--%>
                             <asp:TextBox ID="ProjectNameInsertTextBox" runat="server" Text="<%#: BindItem.ProjectName %>" ValidationGroup="insert" MaxLength="30" />
-                            <asp:RequiredFieldValidator ID="ProjectNameRequiredFieldValidator" ControlToValidate="ProjectNameInsertTextBox" runat="server" ErrorMessage="Project name cannot be empty" ViewStateMode="Inherit" Display="None"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="ProjectNameRequiredFieldValidator" ValidationGroup="insert" ControlToValidate="ProjectNameInsertTextBox" runat="server" ErrorMessage="Project name cannot be empty" ViewStateMode="Inherit" Display="None"></asp:RequiredFieldValidator>
                         </td>
                         <td>
                             <%--<asp:DynamicControl ID="ProjectDescriptionInsert" runat="server" DataField="ProjectDescription" Mode="Insert" ValidationGroup="insert" />--%>
                             <asp:TextBox ID="ProjectDescriptionInsertTextBox" runat="server" Text="<%#: BindItem.ProjectDescription %>" ValidationGroup="insert" MaxLength="500" />
-                            <asp:RequiredFieldValidator ID="ProjectDescriptionRequiredFieldValidator" runat="server" ControlToValidate="ProjectDescriptionInsertTextBox" ErrorMessage="Project description cannot be empty" Display="None"></asp:RequiredFieldValidator>
+                            <asp:RequiredFieldValidator ID="ProjectDescriptionRequiredFieldValidator" runat="server" ValidationGroup="insert" ControlToValidate="ProjectDescriptionInsertTextBox" ErrorMessage="Project description cannot be empty" Display="None"></asp:RequiredFieldValidator>
                         </td>
                         <td><asp:LinkButton runat="server" CommandName="Insert" Text="Spara" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" /></td>

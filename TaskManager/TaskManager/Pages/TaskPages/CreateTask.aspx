@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <h2>Create Tasks</h2>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
-            <asp:FormView ID="FormView1" runat="server" ItemType="TaskManager.Model.Task" InsertMethod="FormView1_InsertItem" DefaultMode="Insert" RenderOuterTable="false">
+            <asp:FormView ID="CreateTaskFormView" runat="server" ItemType="TaskManager.Model.Task" InsertMethod="CreateTaskFormView_InsertItem" DefaultMode="Insert" RenderOuterTable="false">
              <InsertItemTemplate>
                  <div class="form-group create-task">
                     <label for="TaskDescriptionTextBox">Task Description</label>

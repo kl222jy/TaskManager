@@ -13,8 +13,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Presents a message for successful operations
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void Page_Load(object sender, EventArgs e)
         {
             MessageLiteral.Text = Page.GetTemp("message") as string;
@@ -33,8 +33,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Removes the user from users working on the task and if this would result in noone working on the task, it will also change the status of the task.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void StopWorkingOnTaskLinkButton_Command(object sender, CommandEventArgs e)
         {
             if (ModelState.IsValid)
@@ -56,8 +56,8 @@ namespace TaskManager.Pages.TaskPages
         /// <summary>
         /// Changes status of the task to done.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">sender info</param>
+        /// <param name="e">event info</param>
         protected void MarkAsDoneLinkButton_Command(object sender, CommandEventArgs e)
         {
             if (ModelState.IsValid)
