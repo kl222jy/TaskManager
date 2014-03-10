@@ -53,8 +53,8 @@
                             <asp:TextBox ID="ProjectDescriptionInsertTextBox" runat="server" Text="<%#: BindItem.ProjectDescription %>" ValidationGroup="insert" MaxLength="500" />
                             <asp:RequiredFieldValidator ID="ProjectDescriptionRequiredFieldValidator" runat="server" ValidationGroup="insert" ControlToValidate="ProjectDescriptionInsertTextBox" ErrorMessage="Project description cannot be empty" Display="None"></asp:RequiredFieldValidator>
                         </td>
-                        <td><asp:LinkButton runat="server" CommandName="Insert" Text="Spara" /></td>
-                        <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" /></td>
+                        <td><asp:LinkButton runat="server" CommandName="Insert" Text="Save" /></td>
+                        <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false" /></td>
                     </tr>
                 </InsertItemTemplate>
                 <EditItemTemplate>
@@ -62,8 +62,8 @@
                         <%-- DynamicControl ensures validation based on data annotations --%>
                         <td><asp:DynamicControl ID="ProjectNameEdit" runat="server" DataField="ProjectName" Mode="Edit" /></td>
                         <td><asp:DynamicControl ID="ProjectDescriptionEdit" runat="server" DataField="ProjectDescription" Mode="Edit" /></td>
-                        <td><asp:LinkButton runat="server" CommandName="Update" Text="Spara" /></td>
-                        <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Avbryt" CausesValidation="false" /></td>
+                        <td><asp:LinkButton runat="server" CommandName="Update" Text="Save" /></td>
+                        <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false" /></td>
                     </tr>
                 </EditItemTemplate>
             </asp:ListView>
