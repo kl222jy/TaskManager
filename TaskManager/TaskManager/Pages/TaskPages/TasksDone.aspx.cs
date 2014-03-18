@@ -44,7 +44,7 @@ namespace TaskManager.Pages.TaskPages
                 {
                     Service.notDoneTask(int.Parse((string)e.CommandArgument));
                     Page.SetTemp("message", "Task is now in progress again and will now show up in current tasks for users that worked on it when it was marked as done.");
-                    Response.RedirectToRoute("Tasks");
+                    Response.RedirectToRoute("TasksDone");
                     Context.ApplicationInstance.CompleteRequest();
                 }
                 catch (Exception)

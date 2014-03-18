@@ -13,7 +13,7 @@
             </asp:Panel>
             <%-- Error messages --%>
             <asp:ValidationSummary ID="ValidationSummary" runat="server" ShowModelStateErrors="true" CssClass="validation-summary-errors alert alert-danger" />
-            <asp:ValidationSummary ID="InsertSummary" ShowModelStateErrors="false" runat="server" ValidationGroup="insert" CssClass="validation-summary-errors alert alert-danger" />
+            <asp:ValidationSummary ID="InsertSummary" ShowModelStateErrors="false" runat="server" validationgroup="InsertProjectItem" CssClass="validation-summary-errors alert alert-danger" />
             <%-- Projectlist --%>
             <asp:ListView ID="ProjectListView" runat="server"  InsertItemPosition="FirstItem"
                 ItemType="TaskManager.Model.Project" 
@@ -44,16 +44,16 @@
                     <tr>
                         <%-- Tragically, validationgroup also seems to break the functionality of dynamiccontrols.. --%>
                         <td>
-                            <%--<asp:DynamicControl ID="ProjectNameInsert" runat="server" DataField="ProjectName" Mode="Insert" ValidationGroup="insert" />--%>
-                            <asp:TextBox ID="ProjectNameInsertTextBox" runat="server" Text="<%#: BindItem.ProjectName %>" ValidationGroup="insert" MaxLength="30" />
-                            <asp:RequiredFieldValidator ID="ProjectNameRequiredFieldValidator" ValidationGroup="insert" ControlToValidate="ProjectNameInsertTextBox" runat="server" ErrorMessage="Project name cannot be empty" ViewStateMode="Inherit" Display="None"></asp:RequiredFieldValidator>
+                            <%--<asp:DynamicControl ID="ProjectNameInsert" runat="server" DataField="ProjectName" Mode="Insert" validationgroup="InsertProjectItem" />--%>
+                            <asp:TextBox ID="ProjectNameInsertTextBox" runat="server" Text="<%# BindItem.ProjectName %>" MaxLength="30" />
+                            <asp:RequiredFieldValidator ID="ProjectNameRequiredFieldValidator" validationgroup="InsertProjectItem" ControlToValidate="ProjectNameInsertTextBox" runat="server" ErrorMessage="Project name cannot be empty" Display="None" />
                         </td>
                         <td>
-                            <%--<asp:DynamicControl ID="ProjectDescriptionInsert" runat="server" DataField="ProjectDescription" Mode="Insert" ValidationGroup="insert" />--%>
-                            <asp:TextBox ID="ProjectDescriptionInsertTextBox" runat="server" Text="<%#: BindItem.ProjectDescription %>" ValidationGroup="insert" MaxLength="500" />
-                            <asp:RequiredFieldValidator ID="ProjectDescriptionRequiredFieldValidator" runat="server" ValidationGroup="insert" ControlToValidate="ProjectDescriptionInsertTextBox" ErrorMessage="Project description cannot be empty" Display="None"></asp:RequiredFieldValidator>
+                            <%--<asp:DynamicControl ID="ProjectDescriptionInsert" runat="server" DataField="ProjectDescription" Mode="Insert" validationgroup="InsertProjectItem" />--%>
+                            <asp:TextBox ID="ProjectDescriptionInsertTextBox" runat="server" Text="<%# BindItem.ProjectDescription %>" MaxLength="500" />
+                            <asp:RequiredFieldValidator ID="ProjectDescriptionRequiredFieldValidator" runat="server" validationgroup="InsertProjectItem" ControlToValidate="ProjectDescriptionInsertTextBox" ErrorMessage="Project description cannot be empty" Display="None" />
                         </td>
-                        <td><asp:LinkButton runat="server" CommandName="Insert" Text="Save" /></td>
+                        <td><asp:LinkButton runat="server" CommandName="Insert" ValidationGroup="InsertProjectItem" Text="Save" /></td>
                         <td><asp:LinkButton runat="server" CommandName="Cancel" Text="Cancel" CausesValidation="false" /></td>
                     </tr>
                 </InsertItemTemplate>
